@@ -9,8 +9,8 @@ var contexto = canvas.getContext('2d');
 
 const constraints = {
   video: {
-    width: 240,
-    height: 426,
+    width: 500,
+    height: 889,
   }
 };
 /*
