@@ -13,14 +13,14 @@ const constraints = {
     height: 426,
   }
 };
-
+/*
 const constraints2 = {
   video: {
     width: 500,
     height: 889,
   }
 };
-
+*/
 const handleStream = (stream) => {
   videoElement.srcObject = stream;
   setInterval(() => {
@@ -33,7 +33,7 @@ const handleStream = (stream) => {
 
 const startStream = async (constraints) => {
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
-  const streamFoto = await navigator.mediaDevices.getUserMedia(constraints2);
+  //const streamFoto = await navigator.mediaDevices.getUserMedia(constraints2);
   handleStream(stream);
 };
 
