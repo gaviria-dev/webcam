@@ -1,19 +1,29 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+*{
     margin: 0;
     padding: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: blue;
+}
+
 div.camera {
+    display: none;
     align-items: center;
     position: relative;
     z-index: 0;
 }
 
 #video {
-    width: 240px;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
 }
 
 #startbutton {
