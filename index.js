@@ -23,12 +23,14 @@ const constraints2 = {
 */
 const handleStream = (stream) => {
   videoElement.srcObject = stream;
+  /*
   setInterval(() => {
     canvas.width = videoElement.videoWidth;
     canvas.height = videoElement.videoHeight;
     //contexto.scale(2, 2);
     contexto.drawImage(videoElement, 0, 0);
   }, 1000 / 30);
+  */
 };
 
 const startStream = async (constraints) => {
