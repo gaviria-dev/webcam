@@ -1,11 +1,11 @@
 'use strict';
 
 const videoElement = document.querySelector('#video');
-const canvas = document.querySelector('#canvas');
+const captureElement = document.querySelector('#capture');
 const canvasScreen = document.querySelector('#screenshot');
-const buttonElement = document.getElementById('startbutton');
+var foto1 = document.querySelector('#foto1');
+var foto1 = document.querySelector('#foto2');
 
-var contexto = canvas.getContext('2d');
 
 const constraints = {
   video: {
@@ -32,9 +32,12 @@ const startStream = async (constraints) => {
 };
 
 const doScreenshot = () => {
-  canvasScreen.width = videoElement.videoWidth;
-  canvasScreen.height = videoElement.videoHeight;
-  canvasScreen.getContext('2d').drawImage(videoElement, 0, 0);
+  canvasScreen.width = 500;
+  canvasScreen.height = 889;
+  let sH = videoElement.videoHeight;
+  let sW = 0.5625*videoElement.videoHeight;
+  let sX = (videoElement.videoWidth - sW) * 0.5;
+  canvasScreen.getContext('2d').drawImage(videoElement, sX, 0, sW, sH, 0, 0, 500, 889);
   var data = canvasScreen.toDataURL('image/jpg');
   console.log('Foto tomada: ', data);
 }
@@ -44,4 +47,4 @@ if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   startStream(constraints);
 }
 
-buttonElement.addEventListener('click', doScreenshot, false);
+captureElement.addEventListener('click', doScreenshot, false);

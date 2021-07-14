@@ -14,15 +14,9 @@ body {
     height: 100vh;
 }
 
-div.camera {
-    display: none;
-    align-items: center;
-    position: relative;
-    z-index: 0;
-}
-
 #videoContainer {
     position: relative;
+    z-index: 0;
     display: flex;
     justify-content: center;
     aspect-ratio: 9 / 16;
@@ -35,13 +29,19 @@ div.camera {
     margin: 0;
 }
 
-#startbutton {
+#capture {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
+    bottom: 30px;
+    width: 50px;
     height: 50px;
+    border-radius: 50%;
+    background-color: white;
     z-index: 2;
+}
+
+#capture:hover {
+    cursor: pointer;
+    background-color: yellow;
 }
 
 #screenshot {
@@ -49,4 +49,12 @@ div.camera {
     top: 0;
     left: 0;
     z-index: 1;
+}
+
+#foto1 {
+    display: none;
+}
+
+#foto2 {
+    display: none;
 }
