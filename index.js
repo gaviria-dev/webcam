@@ -9,12 +9,6 @@ var contexto = canvas.getContext('2d');
 
 const constraints = {
   video: {
-    width: {
-      ideal: 500,
-    },
-    height: {
-      ideal: 889,
-    },
     facingMode: 'environment',
   }
 };
