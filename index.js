@@ -9,7 +9,6 @@ var contexto = canvas.getContext('2d');
 
 const constraints = {
   video: {
-    aspectRatio: 0.5625,
     facingMode: 'environment',
   }
 };
