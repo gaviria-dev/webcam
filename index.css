@@ -10,7 +10,8 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    background-color: blue;
+    background-color: black;
+    height: 100vh;
 }
 
 div.camera {
