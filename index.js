@@ -12,14 +12,7 @@ const constraints = {
     facingMode: 'environment',
   }
 };
-/*
-const constraints2 = {
-  video: {
-    width: 500,
-    height: 889,
-  }
-};
-*/
+
 const handleStream = (stream) => {
   videoElement.srcObject = stream;
   /*

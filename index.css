@@ -21,6 +21,14 @@ div.camera {
     z-index: 0;
 }
 
+#videoContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+}
+
 #video {
     height: 100vh;
     padding: 0;
@@ -42,4 +50,3 @@ div.camera {
     left: 0;
     z-index: 1;
 }
-
