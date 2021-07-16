@@ -26,6 +26,7 @@
     --boton-bg-color: #005EB8;
     --boton-tx-color: #FFFFFF;
     --boton-size: 16px;
+    --boton-radious: 3px;
 }
 
 p {
@@ -63,6 +64,18 @@ h4 {
     font-weight: var(--h4-weight);
 }
 
+::selection {
+    color: var(--fondo-color);
+    background: var(--h1-color);
+}
+
+.unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -84,39 +97,96 @@ header {
     margin: 0 auto 0 0;
 }
 
-div.container {
-    margin: auto 10px;
+header a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    padding:0 20px;
 }
 
-div.videoIntro {
+header a:hover {
+    color: var(--boton-tx-color);
+    background-color: var(--boton-bg-color);
+}
+
+div.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.tarjetas {
+    position: absolute;
+    min-width: 280px;
+    padding: 0 20px;
+    background-color: var(--fondo-color);
+}
+
+/* Instrucciones 1 INICIO */
+#instrucciones-1 {
+    z-index: 4;
+}
+
+div.videoIntro1 {
     margin: 10px 0 0 0;
     width: 100%;
     height: 150px;
     background-color: #DCE3E4;
 }
+/* Instrucciones 1 FIN */
 
+/* Instrucciones 2 INICIO */
+#instrucciones-2 {
+    z-index: 3;
+}
+/* Instrucciones 2 FIN */
+
+/* Instrucciones 3 INICIO */
+/* Instrucciones 3 FIN */
+
+/* Instrucciones 4 INICIO */
+/* Instrucciones 4 FIN */
+
+/* Boton INICIO */
 div.boton {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 112px auto;
+    margin: 0 0 56px 0;
+    min-height: 56px;
     height: 56px;
     width: 200px;
-    font-size: var(--boton-size);
-    border-radius: 3px;
-    color: var(--boton-tx-color);
+    border-radius: var(--boton-radious);
     background-color: var(--boton-bg-color);
+}
+
+div.boton p {
+    font-size: var(--boton-size);
+    color: var(--boton-tx-color);
+    margin: 0;
 }
 
 div.boton:hover {
     background-color: #213C65;
+    cursor: pointer;
 }
+/* Boton FIN */
 
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-height: 56px;
     height: 56px;
     margin: 0;
     color: white;

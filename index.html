@@ -5,9 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
-    <link rel="stylesheet" href="./assets/styles/index.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <meta name="theme-color" content="#005EB8"><!-- Chrome Firefox -->
+    <meta name="msapplication-navbutton-color" content="#061154"><!-- Windows Phone -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#061154"><!-- iOS Safari -->
+    <link rel="apple-touch-startup-image" href="./assets/img/Corona-favicon.svg">
     <link rel="icon" href="./assets/img/Corona-favicon.svg">
+
+    <link rel="stylesheet" href="./assets/styles/index.css">
+    
     <title>Tu Asiento | Corona</title>
 </head>
 <body>
@@ -21,15 +28,37 @@
             <path d="M11.8198 28.0086C10.5679 28.0086 9.55171 28.9939 9.55171 30.2003C9.55171 31.4068 10.5679 32.3949 11.8198 32.3949C13.0717 32.3949 14.0872 31.4133 14.0872 30.2003C14.0872 28.9874 13.0696 28.0086 11.8198 28.0086ZM11.8198 31.4234C11.2245 31.4234 10.7387 30.8764 10.7387 30.1982C10.7387 29.52 11.2231 28.973 11.8198 28.973C12.4166 28.973 12.9059 29.52 12.9059 30.1982C12.9059 30.8764 12.4166 31.4234 11.8198 31.4234Z" fill="white"/>
             <path d="M6.92613 28.9737C7.21802 28.9737 7.60577 29.0811 7.83856 29.3788L7.88469 29.4415L8.60541 28.9089L8.55496 28.8418C8.32429 28.5539 8.02445 28.3291 7.68341 28.1883C7.34237 28.0476 6.97124 27.9955 6.60464 28.037C6.23804 28.0784 5.8879 28.212 5.5869 28.4254C5.28589 28.6387 5.04382 28.9248 4.88326 29.257C4.72271 29.5891 4.64889 29.9566 4.66871 30.325C4.68853 30.6934 4.80133 31.0508 4.9966 31.3638C5.19186 31.6768 5.46323 31.9353 5.78538 32.1151C6.10754 32.2949 6.46999 32.3902 6.83892 32.3921C7.1685 32.3906 7.49342 32.3142 7.7891 32.1686C8.08478 32.023 8.34347 31.8121 8.54559 31.5518L8.5946 31.4898L7.87892 30.9514L7.82991 31.0235C7.64901 31.3118 7.22739 31.4177 6.92469 31.4177C6.32649 31.4177 5.85586 30.8844 5.85586 30.1925C5.85586 29.5006 6.32649 28.9672 6.92469 28.9672" fill="white"/>
         </svg>
+        <a class="unselectable" href="">
+            Volver a iniciar
+        </a>
     </header>
     <div class="container">
-        <h3>ENCUENTRA EL MEJOR ASIENTO PARA TU SANITARIO</h3>
-        <p>Conoce el asiento compatible con tu sanitario utilizando nuestra herramienta de inteligencia artificial</p>
-        <h4>Conoce cómo funciona</h4>
-        <div class="videoIntro"></div>
+        <div class="tarjetas" id="instrucciones-1">
+            <h3>ENCUENTRA EL MEJOR ASIENTO PARA TU SANITARIO</h3>
+            <p>Conoce el asiento compatible con tu sanitario utilizando nuestra herramienta de inteligencia artificial.</p>
+            <h4>Conoce cómo funciona</h4>
+            <div class="videoIntro1"></div>
+        </div>
+        <div class="tarjetas" id="instrucciones-2">
+            <div class="videoIntro1"></div>
+            <h4>Prepara tu baño para comenzar</h4>
+            <p>
+                Enciende la luz de tu baño.<br></br>
+                Quita los objetos que tengas encima de tu sanitario.<br></br>
+                Cierra la tapa de tu sanitario.
+            </p>
+        </div>
+        <div class="tarjetas" id="instrucciones-3">
+            <h3>Primera foto</h3>
+            <p>Toma una fotografía como indica la imagen (puede ser de cualquier lado).</p>
+            <div class="videoIntro1"></div>
+        </div>
     </div>
-    <div class="boton">Continuar</div>
+    <div class="boton" id="boton">
+        <p class="unselectable">Continuar</p>
+    </div>
     <!-- <input type="file" accept="image/*" capture="camera" id="camera" /> -->
     <footer>©2021 Corona - Todos los derechos reservados</footer>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
