@@ -1,32 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Camera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <meta name="theme-color" content="#005EB8"><!-- Chrome Firefox -->
+    <meta name="msapplication-navbutton-color" content="#061154"><!-- Windows Phone -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#061154"><!-- iOS Safari -->
+    <link rel="apple-touch-startup-image" href="./assets/img/Corona-favicon.svg">
+    <link rel="icon" href="./assets/img/Corona-favicon.svg">
+
+    <link rel="stylesheet" href="./assets/styles/index.css">
+    
+    <title>Tu Asiento | Corona</title>
 </head>
 <body>
-    <div id="videoContainer">
-        <video id="video" autoplay="autoplay"></video>
-        <div id="capture"></div>
-        <canvas id="screenshot"></canvas>
+    <header>
+        <svg width="56" height="56" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 0H0V40H40V0Z" fill="#005EB8"/>
+            <path d="M34.0454 32.1297C34.2032 32.0645 34.372 32.0303 34.5427 32.0288C34.8305 32.0284 35.1094 32.1286 35.3312 32.3121V28.093L35.187 28.1975C34.9958 28.3038 34.781 28.3605 34.5622 28.3625C34.3715 28.3618 34.183 28.3215 34.0087 28.2443C34.0087 28.2443 33.9769 28.2292 33.933 28.2104C33.8998 28.2011 33.7168 28.1182 33.6591 28.0966C33.6483 28.0966 33.5719 28.0742 33.5452 28.067C33.4344 28.0426 33.3223 28.0248 33.2094 28.0137C33.1719 28.0137 33.1373 28.0086 33.1042 28.0086H33.0811C31.9423 28.0086 31.022 28.9939 31.022 30.2003C31.0407 31.4256 31.9423 32.3949 33.0811 32.3949C33.3615 32.3954 33.6384 32.3325 33.8912 32.2112L34.0454 32.1297ZM33.1957 31.4234C32.6566 31.4234 32.2155 30.8764 32.2155 30.1982C32.2155 29.52 32.6566 28.973 33.1957 28.973C33.7348 28.973 34.1867 29.52 34.1867 30.1982C34.1867 30.8764 33.7442 31.4234 33.1957 31.4234Z" fill="white"/>
+            <path d="M27.2014 28.0685C27.2233 28.0648 27.2449 28.0599 27.2663 28.0541C27.3923 28.0264 27.5207 28.0112 27.6497 28.0087C27.7139 28.0056 27.7783 28.0078 27.8422 28.0151C28.867 28.0872 29.5719 28.8915 29.5719 30.0231V32.307H28.4346V30.044C28.4346 29.3232 27.9827 29.0018 27.5323 29.0018C27.0623 29.0018 26.5427 29.3744 26.5427 29.876V32.307H25.4032V28.0923L25.5546 28.1975C25.7445 28.3046 25.9586 28.3614 26.1766 28.3625C26.3666 28.3604 26.5543 28.3205 26.7286 28.245C26.7286 28.245 27.0739 28.1045 27.2014 28.0685" fill="white"/>
+            <path d="M21.5798 28.0086C20.3272 28.0086 19.3096 28.9939 19.3096 30.2003C19.3096 31.4068 20.3272 32.3949 21.5798 32.3949C22.8324 32.3949 23.8443 31.4133 23.8443 30.2003C23.8443 28.9874 22.8274 28.0086 21.5798 28.0086ZM21.5798 31.4227C20.9838 31.4227 20.4987 30.8757 20.4987 30.1975C20.4987 29.5193 20.9838 28.9722 21.5798 28.9722C22.1759 28.9722 22.6609 29.5193 22.6609 30.1975C22.6609 30.8757 22.1759 31.4227 21.5798 31.4227Z" fill="white"/>
+            <path d="M16.7294 29.876C16.7309 29.709 16.7903 29.5477 16.8976 29.4196C17.0049 29.2916 17.1533 29.2048 17.3175 29.174C17.355 29.1676 17.8458 29.0854 18.1434 29.4623V28.0411C18.0243 28.0208 17.9038 28.01 17.7831 28.0086C17.505 28.0092 17.2307 28.0739 16.9816 28.1975L16.8786 28.2494C16.7172 28.3246 16.5413 28.3633 16.3632 28.3625C16.1439 28.3624 15.9284 28.304 15.7391 28.1931L15.595 28.093V32.3077H16.733L16.7294 29.876Z" fill="white"/>
+            <path d="M11.8198 28.0086C10.5679 28.0086 9.55171 28.9939 9.55171 30.2003C9.55171 31.4068 10.5679 32.3949 11.8198 32.3949C13.0717 32.3949 14.0872 31.4133 14.0872 30.2003C14.0872 28.9874 13.0696 28.0086 11.8198 28.0086ZM11.8198 31.4234C11.2245 31.4234 10.7387 30.8764 10.7387 30.1982C10.7387 29.52 11.2231 28.973 11.8198 28.973C12.4166 28.973 12.9059 29.52 12.9059 30.1982C12.9059 30.8764 12.4166 31.4234 11.8198 31.4234Z" fill="white"/>
+            <path d="M6.92613 28.9737C7.21802 28.9737 7.60577 29.0811 7.83856 29.3788L7.88469 29.4415L8.60541 28.9089L8.55496 28.8418C8.32429 28.5539 8.02445 28.3291 7.68341 28.1883C7.34237 28.0476 6.97124 27.9955 6.60464 28.037C6.23804 28.0784 5.8879 28.212 5.5869 28.4254C5.28589 28.6387 5.04382 28.9248 4.88326 29.257C4.72271 29.5891 4.64889 29.9566 4.66871 30.325C4.68853 30.6934 4.80133 31.0508 4.9966 31.3638C5.19186 31.6768 5.46323 31.9353 5.78538 32.1151C6.10754 32.2949 6.46999 32.3902 6.83892 32.3921C7.1685 32.3906 7.49342 32.3142 7.7891 32.1686C8.08478 32.023 8.34347 31.8121 8.54559 31.5518L8.5946 31.4898L7.87892 30.9514L7.82991 31.0235C7.64901 31.3118 7.22739 31.4177 6.92469 31.4177C6.32649 31.4177 5.85586 30.8844 5.85586 30.1925C5.85586 29.5006 6.32649 28.9672 6.92469 28.9672" fill="white"/>
+        </svg>
+        <a class="unselectable" href="">
+            Volver a iniciar
+        </a>
+    </header>
+    <div class="container">
+        <div class="tarjetas" id="instrucciones-1">
+            <h3>ENCUENTRA EL MEJOR ASIENTO PARA TU SANITARIO</h3>
+            <p>Conoce el asiento compatible con tu sanitario utilizando nuestra herramienta de inteligencia artificial.</p>
+            <h4>Conoce cómo funciona</h4>
+            <div class="videoIntro1"></div>
+        </div>
+        <div class="tarjetas" id="instrucciones-2">
+            <div class="videoIntro1"></div>
+            <h4>Prepara tu baño para comenzar</h4>
+            <p>
+                Enciende la luz de tu baño.<br></br>
+                Quita los objetos que tengas encima de tu sanitario.<br></br>
+                Cierra la tapa de tu sanitario.
+            </p>
+        </div>
+        <div class="tarjetas" id="instrucciones-3">
+            <h3>Primera foto</h3>
+            <p>Toma una fotografía como indica la imagen (puede ser de cualquier lado).</p>
+            <div class="videoIntro1"></div>
+        </div>
     </div>
-    <div id="instrucciones1" class="target">
-        <h2>Toma una foto</h2>
-        <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate praesentium iure beatae quos iste eligendi itaque natus harum eveniet. Mollitia sequi dolore perspiciatis delectus expedita alias corporis fugiat. Molestias, aliquam.
-        </p>
-        <div id="btn1" class="boton">Tomar primera foto</div>
+    <div class="boton" id="boton">
+        <p class="unselectable">Continuar</p>
     </div>
-    <div id="instrucciones2" class="target">
-        <h2>Toma otra foto</h2>
-        <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate praesentium iure beatae quos iste eligendi itaque natus harum eveniet. Mollitia sequi dolore perspiciatis delectus expedita alias corporis fugiat. Molestias, aliquam.
-        </p>
-        <div id="btn2" class="boton">Tomar segunda foto</div>
-    </div>
-    <script src="index.js"></script>
+    <!-- <input type="file" accept="image/*" capture="camera" id="camera" /> -->
+    <footer>©2021 Corona - Todos los derechos reservados</footer>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
