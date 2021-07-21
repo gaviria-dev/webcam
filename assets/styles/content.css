@@ -37,7 +37,6 @@ figure.videoIntro1 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-
 }
 /* Instrucciones 1 FIN */
 
@@ -52,7 +51,6 @@ figure.videoIntro2 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-
 }
 /* Instrucciones 2 FIN */
 
@@ -67,7 +65,6 @@ figure.videoIntro3 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-
 }
 /* Instrucciones 3 FIN */
 
@@ -82,7 +79,6 @@ figure.videoIntro4 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-
 }
 /* Instrucciones 4 FIN */
 
@@ -90,6 +86,13 @@ figure.videoIntro4 {
 #instrucciones-5 {
     display: none;
     z-index: 5;
+}
+
+figure.videoIntro5 {
+    background-image: url("/assets/img/procesando.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
 }
 /* Instrucciones 5 FIN */
 
