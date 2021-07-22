@@ -27,6 +27,12 @@ figure{
     height: 100%;
 }
 
+lottie-player {
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+}
+
 /* Instrucciones 1 INICIO */
 #instrucciones-1 {
     z-index: 1;
@@ -45,13 +51,13 @@ figure.videoIntro1 {
     display: none;
     z-index: 2;
 }
-
-figure.videoIntro2 {
+/* figure.videoIntro2 {
     background-image: url("/assets/img/Preparar-baño.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-}
+} */
+
 /* Instrucciones 2 FIN */
 
 /* Instrucciones 3 INICIO */
@@ -59,13 +65,13 @@ figure.videoIntro2 {
     display: none;
     z-index: 3;
 }
-
-figure.videoIntro3 {
+/* figure.videoIntro3 {
     background-image: url("/assets/img/Foto1.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-}
+} */
+
 /* Instrucciones 3 FIN */
 
 /* Instrucciones 4 INICIO */
@@ -73,13 +79,13 @@ figure.videoIntro3 {
     display: none;
     z-index: 4;
 }
-
-figure.videoIntro4 {
+/* figure.videoIntro4 {
     background-image: url("/assets/img/Foto2.gif");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
-}
+} */
+
 /* Instrucciones 4 FIN */
 
 /* Instrucciones 5 INICIO */
@@ -100,6 +106,23 @@ figure.videoIntro5 {
 #instrucciones-6 {
     display: none;
     z-index: 6;
+}
+
+#instrucciones-6 p{
+    width: 100%;
+    word-break: break-all;
+}
+
+#canvas {
+    display: none;
+}
+
+#photo1 {
+    display: none;
+}
+
+#photo2 {
+    display: none;
 }
 /* Instrucciones 6 FIN */
 

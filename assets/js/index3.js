@@ -11,13 +11,10 @@ const instrucciones3 = document.getElementById('instrucciones-3');
 const instrucciones4 = document.getElementById('instrucciones-4');
 const instrucciones5 = document.getElementById('instrucciones-5');
 const instrucciones6 = document.getElementById('instrucciones-6');
-const photo1 = document.getElementById("photo1");
-const photo2 = document.getElementById("photo2");
-const canvas = document.getElementById('canvas');
-const canvasIMG = document.createElement("img");
-const resultados = document.getElementById('resultados');
-const sanitaryP = document.getElementById('sanitaryP');
-const geometryP = document.getElementById('geometryP');
+const photo1 = document.createElement("img");
+const photo2 = document.createElement("img");
+const canvas = document.createElement("canvas");
+
 // Animaciones Lotties
 const animationIntro2 = document.querySelector("lottie-player.animationIntro2");
 const animationIntro3 = document.querySelector("lottie-player.animationIntro3");
@@ -56,10 +53,10 @@ const getBase64FromFile = (img, callback) => {
 // Funcion de preprocesado de imagen
 const preprocess = (photo) => {
     let sH = photo.height;
-    let sW = Math.round(0.5625*photo.height);
-    let sX = Math.round((photo.width - sW) * 0.5);
+    let sW = 0.5625*photo.height;
+    let sX = (photo.width - sW) * 0.5;
     canvas.getContext('2d').drawImage(photo, sX, 0, sW, sH, 0, 0, 500, 889);
-    return canvas.toDataURL('image/jpeg');
+    return canvas.toDataURL('image/jpg');
 }
 
 // Evento de Click en boton de instrucciones
@@ -93,10 +90,8 @@ camara.addEventListener('change', (image) => {
         case 3:
             getBase64FromFile(image.target.files[0], (photoBase64) => {
                 photo1.src = photoBase64;
-                //console.log(photoBase64);
                 let base64 = preprocess(photo1);
-                //console.log(base64);
-                state.sanitary = base64//.split(',')[1];
+                state.sanitary = base64.split(',')[1];
                 instrucciones3.style.display = 'none';
                 instrucciones4.style.display = 'flex';
                 state.numeroPaso++;
@@ -107,78 +102,19 @@ camara.addEventListener('change', (image) => {
             getBase64FromFile(image.target.files[0], (photoBase64) => {
                 photo2.src = photoBase64;
                 let base64 = preprocess(photo2);
-                //console.log(base64);
-                state.geometry = base64//.split(',')[1];
+                console.log(base64);
+                state.geometry = base64.split(',')[1];
                 botonCamara.style.display = 'none';
                 instrucciones4.style.display = 'none';
                 instrucciones5.style.display = 'flex';
                 // { geometry: state.geometry, sanitary: base64.split(',')[1]}
-                
-                // Autenticacion de API
-                let myHeaders1 = new Headers();
-                myHeaders1.append("Content-Type", "application/json");
-
-                let raw = JSON.stringify({
-                "Username": "celerik",
-                "Password": "Celer1K$896"
-                });
-
-                let requestOptions = {
-                method: 'POST',
-                headers: myHeaders1,
-                body: raw,
-                redirect: 'follow'
-                };
-
-                fetch("https://horus.corona.com.co:2022/api/login/authenticate", requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    // console.log(typeof(result));
-                    let bearer = "Bearer";
-                    let stringToken = bearer.concat(" ", result);
-                    let myHeaders2 = new Headers();
-                    //myHeaders2.append("Content-Type", "multipart/form-data");
-                    myHeaders2.append("Authorization", stringToken);
-
-                    let sanitaryFile = dataURItoBlob(state.sanitary)
-                    
-                    let geometryFile = dataURItoBlob(state.geometry)
-                    let formdata = new FormData(document.forms[0]);
-                    formdata.append("sanitary", sanitaryFile, "sanitary.jpg");
-                    formdata.append("geometry", geometryFile, "geometry.jpg");
-
-                    let requestOptions2 = {
-                        method: 'POST',
-                        headers: myHeaders2,
-                        body: formdata,
-                        redirect: 'follow'
-                    };
-
-                    fetch("https://horus.corona.com.co:2022/api/prediction/predictSKU", requestOptions2)
-                    .then(response => response.text())
-                    .then(result => {
-                        console.log(result);
+                postData('https://vqg2xe8sgk.execute-api.sa-east-1.amazonaws.com/Production', { geometry: state.geometry, sanitary: state.sanitary } )
+                    .then(data => {
+                        console.log(data.body);
                         instrucciones5.style.display = 'none';
                         instrucciones6.style.display = 'flex';
-                        resultados.innerHTML = result;
-                        canvas.style.display = 'block';
-                        //photo1.style.display = 'block';
-                        //instrucciones6.appendChild(canvasIMG);
-                        // sanitaryP.innerHTML = state.sanitary;
-                        // geometryP.innerHTML = state.geometry;
                         state.numeroPaso++;
-                    })
-                    .catch(error => console.log('error', error));
-                })
-                .catch(error => console.log('error', error));
-
-                // postData('https://vqg2xe8sgk.execute-api.sa-east-1.amazonaws.com/Production', { geometry: state.geometry, sanitary: state.sanitary } )
-                //     .then(data => {
-                //         console.log(data.body);
-                //         instrucciones5.style.display = 'none';
-                //         instrucciones6.style.display = 'flex';
-                //         state.numeroPaso++;
-                //     });
+                    });
             });
     
         default:
@@ -187,53 +123,21 @@ camara.addEventListener('change', (image) => {
 }, false);
 
 // Ejemplo implementando el metodo POST:
-// async function postData(url = '', data = {}) {
-//     // Opciones por defecto estan marcadas con un *
-//     const response = await fetch(url, {
-//       method: 'POST', // *GET, POST, PUT, DELETE, etc.
-//       mode: 'cors', // no-cors, *cors, same-origin
-//       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-//       credentials: 'omit', // include, *same-origin, omit
-//       headers: {
-//         'Content-Type': 'application/json'
-//         // 'Content-Type': 'application/x-www-form-urlencoded',
-//       },
-//       redirect: 'follow', // manual, *follow, error
-//       referrerPolicy: 'no-referrer-when-downgrade', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-//       body: JSON.stringify(data) // body data type must match "Content-Type" header
-//     });
-//     console.log(response);
-//     return response.json(); // parses JSON response into native JavaScript objects
-// }
-
-// function DataURIToBlob(dataURI) {
-//     const splitDataURI = dataURI.split(',')
-//     const byteString = splitDataURI[0].indexOf('base64') >= 0 ? atob(splitDataURI[1]) : decodeURI(splitDataURI[1])
-//     const mimeString = splitDataURI[0].split(':')[1].split(';')[0]
-
-//     const ia = new Uint8Array(byteString.length)
-//     for (let i = 0; i < byteString.length; i++)
-//         ia[i] = byteString.charCodeAt(i)
-
-//     return new Blob([ia], { type: mimeString })
-// }
-
-function dataURItoBlob(dataURI) {
-    // convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-        byteString = atob(dataURI.split(',')[1]);
-    else
-        byteString = unescape(dataURI.split(',')[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // write the bytes of the string to a typed array
-    var ia = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-
-    return new Blob([ia], {type:mimeString});
+async function postData(url = '', data = {}) {
+    // Opciones por defecto estan marcadas con un *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer-when-downgrade', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    console.log(response);
+    return response.json(); // parses JSON response into native JavaScript objects
 }

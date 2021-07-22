@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" /> -->
     <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> -->
     
@@ -15,6 +16,7 @@
 
     <link rel="stylesheet" href="./assets/styles/index.css">
     <link rel="stylesheet" href="./assets/styles/content.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>Tu Asiento | Corona</title>
 </head>
 <body>
@@ -38,7 +40,8 @@
             <figure class="videoIntro1"></figure>
         </div>
         <div class="tarjetas" id="instrucciones-2">
-            <figure class="videoIntro2"></figure>
+            <lottie-player class="animationIntro2" render="svg" background="transparent" speed="1.5" loop autoplay></lottie-player>
+            <!-- <figure class="videoIntro2"></figure> -->
             <h4>Prepara tu baño para comenzar</h4>
             <p>
                 Enciende la luz de tu baño.<br></br>
@@ -49,19 +52,26 @@
         <div class="tarjetas" id="instrucciones-3">
             <h3>Primera foto</h3>
             <p>Toma una fotografía como indica la imagen (puede ser de cualquier lado).</p>
-            <figure class="videoIntro3"></figure>
+            <!-- <figure class="videoIntro3"></figure> -->
+            <lottie-player class="animationIntro3" render="svg" background="transparent" speed="1.5" loop autoplay></lottie-player>
         </div>
         <div class="tarjetas" id="instrucciones-4">
             <h3>Segunda foto</h3>
             <p>Toma una fotografía del sanitario completo visto desde arriba.</p>
-            <figure class="videoIntro4"></figure>
+            <!-- <figure class="videoIntro4"></figure> -->
+            <lottie-player class="animationIntro4" render="svg" background="transparent" speed="1.5" loop autoplay></lottie-player>
         </div>
         <div class="tarjetas" id="instrucciones-5">
             <figure class="videoIntro5"></figure>
             <p>Nuestro motor de inteligencia artificial está buscando tu sanitario</p>
         </div>
         <div class="tarjetas" id="instrucciones-6">
-            <p>Terminaste!</p>
+            <p id="resultados"></p>
+            <p id="sanitaryP"></p>
+            <p id="geometryP"></p>
+            <canvas id="canvas" width="500" height="889"></canvas>
+            <img id="photo1">
+            <img id="photo2">
         </div>
     </div>
     <div class="boton" id="boton">
